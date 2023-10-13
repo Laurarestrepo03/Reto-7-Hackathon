@@ -1,5 +1,5 @@
 ## Welcome! 👋
-This repository includes the source code for a Rick and Morty game where you guess characters from the show! Here's how to launch it:
+This repository includes the source code for a Rick and Morty game where you have to guess characters from the show! Here's how to launch it:
 
 1. Download this repository locally.
 2. Open a terminal and execute the command `npm install`
