@@ -71,8 +71,7 @@ function App() {
         setLaunchRandomGif(false);
       }
       else {
-        alert("Try again!")
-        window.location.reload();
+        alert("Incorrect, make another guess!")
       }
     }
   };
