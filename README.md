@@ -4,7 +4,7 @@ This is the source code for a Rick and Morty game where you guess characters fro
 1. Download this repository locally.
 2. Open a terminal and execute this command: `npm install`
 3. Start the app with `npm start`
-4. Open the app in any browser with the following route: <http://localhost:3000>
+4. Open any browser and go to the following route: <http://localhost:3000>
 
 ## Game 🕹️
 Once you launch the app, you'll be shown 5 different characters and you'll have to guess which one has the attributes listed above. After you guess correctly 10 times you'll receive a gift! Have fun! 
