@@ -62,7 +62,7 @@ function App() {
     }
   };
 
-  const handleAgain = () => { setProgress(0); };
+  const handleAgain = () => { setProgress(0);};
 
   const openGift = () => { 
     setLaunchRandomGif(true); 
@@ -113,7 +113,7 @@ function App() {
       </table>
       <div className="characters">
         {charactersLoaded && progress < 100 && characters.map((character, index) => (
-          <Card style={{ margin: "3vmin" }} key={character.id}>
+          <Card style={{ margin: "3vmin", border:"none" }} key={character.id}>
             <Card.Img style={{ cursor: "pointer" }} src={character.image} onClick={() => handleClick(index)} alt={character.name} />
           </Card>
         ))}
@@ -133,12 +133,13 @@ function App() {
             <div style={{textAlign:"center"}}>
               <h4 style={{marginBottom:"2vmin"}}>Here's a random gif!</h4>
               <img style={{height:"25vmin", marginBottom:"5vmin"}} src={gif.data.images.original.url} alt="random-gif"></img>
+              <div className="center-content"> 
+                <Button onClick={handleAgain}>Again!</Button>
+              </div>
             </div>
    
           )}
-          <div className="center-content"> 
-            <Button onClick={handleAgain}>Again!</Button>
-          </div>
+          
           
         </div>}
       </div>
