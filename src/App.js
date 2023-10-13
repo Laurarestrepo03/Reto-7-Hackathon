@@ -72,6 +72,7 @@ function App() {
       }
       else {
         alert("Try again!")
+        window.location.reload();
       }
     }
   };
