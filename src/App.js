@@ -51,7 +51,6 @@ function App() {
       const response = await fetch(URL);
       const data = await response.json();
       setGif(data);
-      console.log(data);
       setLaunchRandomGif(false);
     };
     if (launchRandomGif) {fetchGif()};
