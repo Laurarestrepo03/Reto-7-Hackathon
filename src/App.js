@@ -39,7 +39,6 @@ function App() {
       const data = await response.json();
       setCharacters(data);
       setCharactersLoaded(true);
-      console.log(data);
     };
     if (!charactersLoaded && randomIDsLoaded) {fetchCharacters()};
   }, [charactersLoaded, randomIDs, randomIDsLoaded]);
