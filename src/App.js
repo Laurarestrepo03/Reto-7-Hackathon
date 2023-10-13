@@ -14,6 +14,10 @@ function App() {
 
   const [randomCharacter, setRandomCharacter] = useState(Math.floor(Math.random() * 4) + 1);
 
+  const [gif, setGif] = useState(null);
+  const [launchRandomGif, setLaunchRandomGif] = useState(false);
+  const [renderGift, setRenderGift] = useState(true);
+
   useEffect(() => {
     const createRandomIDs = () => {
       const updateRandomIDs = [...randomIDs];
@@ -47,17 +51,36 @@ function App() {
         setRandomCharacter(Math.floor(Math.random() * 4) + 1)
         setRandomIDsLoaded(false);
         setCharactersLoaded(false);
-        setProgress(progress+10)
+        setProgress(progress+10);
+        setRenderGift(true);
+        setGif(null);
+        setLaunchRandomGif(false);
       }
       else {
         alert("Try again!")
       }
     }
-  }
+  };
 
-  const handleAgain = () => {
-    setProgress(0);    
-  }
+  const handleAgain = () => { setProgress(0); };
+
+  const openGift = () => { 
+    setLaunchRandomGif(true); 
+    setRenderGift(false);
+  };
+
+  useEffect(() => {
+    const fetchGif = async () => {
+      const URL = "https://api.giphy.com/v1/gifs/random?api_key=0UTRbFtkMxAplrohufYco5IY74U8hOes&tag=fail&rating=pg-13";
+      const response = await fetch(URL);
+      const data = await response.json();
+      setGif(data);
+      console.log(data);
+      setLaunchRandomGif(false);
+    };
+  
+    if (launchRandomGif) {fetchGif()};
+  }, [launchRandomGif, gif]);
 
   return (
     <div>
@@ -70,6 +93,7 @@ function App() {
       <table className="table" style={{textAlign:"center", marginTop:"3vmin"}}>
         <thead>
           <tr>
+            <th>Name</th>
             <th>Status</th>
             <th>Species</th>
             <th>Type</th>
@@ -79,6 +103,7 @@ function App() {
         {charactersLoaded && progress < 100 && 
         <tbody>
           <tr>
+            <td>{characters[randomCharacter].name}</td>
             <td>{characters[randomCharacter].status}</td>
             <td>{characters[randomCharacter].species}</td>
             <td>{characters[randomCharacter].type}</td>
@@ -93,11 +118,31 @@ function App() {
           </Card>
         ))}
       </div>
-      <div className="center-content">
-        {progress === 100 && <div><Button onClick={handleAgain}>Again!</Button></div>}
+      <div >
+        {progress === 100 && 
+        <div>
+          {renderGift && (
+            <div style={{textAlign:"center"}}>
+              <h4 style={{marginBottom:"2vmin"}}>You won! Open your gift!</h4>
+              <img onClick={openGift} style={{height:"18vmin", marginBottom:"5vmin", cursor:"pointer"}} src="https://media4.giphy.com/media/fjxeswpTKg3Uy2INQx/giphy.gif" alt="gift"></img>
+            </div>
+            
+          )}
+          
+          {gif !== null && (
+            <div style={{textAlign:"center"}}>
+              <h4 style={{marginBottom:"2vmin"}}>Here's a random gif!</h4>
+              <img style={{height:"20vmin", marginBottom:"5vmin"}} src={gif.data.images.original.url} alt="random-gif"></img>
+            </div>
+   
+          )}
+          <div className="center-content"> 
+            <Button onClick={handleAgain}>Again!</Button>
+          </div>
+          
+        </div>}
       </div>
          
-    
     </div>
   );
 }
