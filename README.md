@@ -15,4 +15,4 @@ Once you launch the app, you'll be shown 5 different characters and you'll have 
 ## About
 This app uses two APIs, which are the following:
 - [Rick and Morty API](https://rickandmortyapi.com/documentation/)
-- [Giphy API](https://developers.giphy.com/docs/api/#quick-start-guide)
+- [GIPHY API](https://developers.giphy.com/docs/api/#quick-start-guide)
