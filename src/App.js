@@ -71,7 +71,8 @@ function App() {
 
   useEffect(() => {
     const fetchGif = async () => {
-      const URL = "https://api.giphy.com/v1/gifs/random?api_key=0UTRbFtkMxAplrohufYco5IY74U8hOes&tag=fail&rating=pg-13";
+      const apiKey = "6Q43PZEI57epqdeZkWj9nqn3qs3OUXeM"
+      const URL = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=fail&rating=pg-13`;
       const response = await fetch(URL);
       const data = await response.json();
       setGif(data);
@@ -114,7 +115,7 @@ function App() {
       <div className="characters">
         {charactersLoaded && progress < 100 && characters.map((character, index) => (
           <Card style={{ margin: "3vmin", border:"none" }} key={character.id}>
-            <Card.Img style={{ cursor: "pointer" }} src={character.image} onClick={() => handleClick(index)} alt={character.name} />
+            <Card.Img style={{ cursor: "pointer", height:"30vmin" }} src={character.image} onClick={() => handleClick(index)} alt={character.name} />
           </Card>
         ))}
       </div>
