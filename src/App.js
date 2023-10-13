@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div>
-      <h2 style={{textAlign:"center", marginTop:"3vmin"}}>Guess 10 characters and win something!</h2>
+      <h2 style={{textAlign:"center", marginTop:"3vmin"}}>Guess 10 characters and win a gift!</h2>
       <div className="center-content">
         <div className="progress-bar">
             <div className="progress" style={{ width: `${progress}%`}}></div>
