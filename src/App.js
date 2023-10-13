@@ -132,7 +132,7 @@ function App() {
           {gif !== null && (
             <div style={{textAlign:"center"}}>
               <h4 style={{marginBottom:"2vmin"}}>Here's a random gif!</h4>
-              <img style={{height:"20vmin", marginBottom:"5vmin"}} src={gif.data.images.original.url} alt="random-gif"></img>
+              <img style={{height:"25vmin", marginBottom:"5vmin"}} src={gif.data.images.original.url} alt="random-gif"></img>
             </div>
    
           )}
