@@ -18,8 +18,9 @@ function App() {
   const [launchRandomGif, setLaunchRandomGif] = useState(false);
   const [renderGift, setRenderGift] = useState(true);
 
+  //Set randomIDs
   useEffect(() => {
-    const createRandomIDs = () => {
+    const setRandomIDs = () => {
       const updateRandomIDs = [...randomIDs];
       const randomID = Math.floor(Math.random() * 826) + 1;
       if (!randomIDs.includes(randomID)){
@@ -27,12 +28,12 @@ function App() {
         setRandomIDs(updateRandomIDs);
       }
       }
-    if (randomIDs.length < 5) {createRandomIDs();} else {setRandomIDsLoaded(true)};
+    if (randomIDs.length < 5) {setRandomIDs();} else {setRandomIDsLoaded(true)};
   }, [randomIDs]);
   
-
+  //Fetch characters
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCharacters = async () => {
       const URL = "https://rickandmortyapi.com/api/character/" + randomIDs.join(',');
       const response = await fetch(URL);
       const data = await response.json();
@@ -40,9 +41,22 @@ function App() {
       setCharactersLoaded(true);
       console.log(data);
     };
-  
-    if (!charactersLoaded && randomIDsLoaded) {fetchData()};
+    if (!charactersLoaded && randomIDsLoaded) {fetchCharacters()};
   }, [charactersLoaded, randomIDs, randomIDsLoaded]);
+
+  //Fetch gif
+  useEffect(() => {
+    const fetchGif = async () => {
+      const apiKey = "6Q43PZEI57epqdeZkWj9nqn3qs3OUXeM"
+      const URL = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=fail&rating=pg-13`;
+      const response = await fetch(URL);
+      const data = await response.json();
+      setGif(data);
+      console.log(data);
+      setLaunchRandomGif(false);
+    };
+    if (launchRandomGif) {fetchGif()};
+  }, [launchRandomGif, gif]);
       
   const handleClick = (index) => {
     if (0 <= progress) {
@@ -68,20 +82,6 @@ function App() {
     setLaunchRandomGif(true); 
     setRenderGift(false);
   };
-
-  useEffect(() => {
-    const fetchGif = async () => {
-      const apiKey = "6Q43PZEI57epqdeZkWj9nqn3qs3OUXeM"
-      const URL = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=fail&rating=pg-13`;
-      const response = await fetch(URL);
-      const data = await response.json();
-      setGif(data);
-      console.log(data);
-      setLaunchRandomGif(false);
-    };
-  
-    if (launchRandomGif) {fetchGif()};
-  }, [launchRandomGif, gif]);
 
   return (
     <div>
