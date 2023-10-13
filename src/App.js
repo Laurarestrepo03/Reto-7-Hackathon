@@ -18,17 +18,17 @@ function App() {
   const [launchRandomGif, setLaunchRandomGif] = useState(false);
   const [renderGift, setRenderGift] = useState(true);
 
-  //Set randomIDs
+  //Fetch randomIDs
   useEffect(() => {
-    const setRandomIDs = () => {
+    const fetchRandomIDs = () => {
       const updateRandomIDs = [...randomIDs];
       const randomID = Math.floor(Math.random() * 826) + 1;
       if (!randomIDs.includes(randomID)){
-        updateRandomIDs.push(randomID);
+        updateRandomIDs.push(randomID);  
         setRandomIDs(updateRandomIDs);
       }
       }
-    if (randomIDs.length < 5) {setRandomIDs();} else {setRandomIDsLoaded(true)};
+    if (randomIDs.length < 5) {fetchRandomIDs();} else {setRandomIDsLoaded(true)};
   }, [randomIDs]);
   
   //Fetch characters
