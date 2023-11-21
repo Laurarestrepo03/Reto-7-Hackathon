@@ -10,7 +10,7 @@ This repository includes the source code for a Rick and Morty game where you hav
 Once the app is running, you'll be shown 5 different characters and you'll have to guess which one matches the attributes listed above. After guessing correctly 10 times you'll receive a gift! Have fun! 
 <br>
 
-<img width="500" alt="game" src="https://github.com/Laurarestrepo03/Reto-7-Hackathon/assets/69609680/b48d0270-293b-4f96-ab7b-bb9fc2d60ba7">
+<img width="600" alt="game" src="https://github.com/Laurarestrepo03/Reto-7-Hackathon/assets/69609680/b48d0270-293b-4f96-ab7b-bb9fc2d60ba7">
 
 ## About
 This app uses two APIs, which are the following:
