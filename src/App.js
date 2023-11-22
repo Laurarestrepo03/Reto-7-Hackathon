@@ -126,20 +126,16 @@ function App() {
               <img onClick={openGift} style={{height:"18vmin", marginBottom:"5vmin", cursor:"pointer"}} src="https://media4.giphy.com/media/fjxeswpTKg3Uy2INQx/giphy.gif" alt="gift"></img>
             </div>
             
-          )}
-          
+          )} 
           {gif !== null && (
             <div style={{textAlign:"center"}}>
               <h4 style={{marginBottom:"2vmin"}}>Here's a random gif!</h4>
               <img style={{height:"25vmin", marginBottom:"5vmin"}} src={gif.data.images.original.url} alt="random-gif"></img>
-              <div className="center-content"> 
+              <div className="center-content">
                 <Button onClick={handleAgain}>Again!</Button>
               </div>
             </div>
-   
-          )}
-          
-          
+          )}   
         </div>}
       </div>
          
